@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load hosts_override %}
+
+{% block title %}Настройки поиска{% endblock %}
+{% block brand-name %}
+    Поисковик
+{% endblock %}
+{% block brand-name-url %}
+    {% url 'search' %}
+    {# TODO: fix this url name #}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form action="{% url 'search-scrape' host 'api' %}" method="POST">
+            {% csrf_token %}
+            <input hidden value="aXyNizxG.KmS56UHBpVzPT0B4lrrhLt5dp6JnZYtJ" name="token">
+            <label for="url">С какого URL начать Crawling ссылок?</label>
+            <input type="text" placeholder="example.com" id="url" name="start_page">
+            <button type="submit" class="btn btn-primary">Начать</button>
+        </form>
+    </div>
+{% endblock %}

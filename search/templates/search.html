@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load hosts_override %}
+
+{% block title %}
+    Поиск Khrmff
+{% endblock %}
+{% block brand-name %}
+    Поисковик
+{% endblock %}
+{% block brand-name-url %}
+    {% url 'search' %}
+    {# TODO: fix this url name #}
+{% endblock %}
+
+{% block content %}
+    <div class="container text-center ">
+        <h1>Введите свой поисковой запрос</h1>
+        <form action="{% url 'search_results' %}" method="GET">
+            <label for="query">Ваш поисковой запрос</label>
+            <input placeholder="Я хочу найти..." type="text" class="form-control" id="query" name="query" required>
+            <button class="btn btn-primary btn-lg mt-1" type="submit">Искать!</button>
+            {# TODO: if empty, ignore it. #}
+        </form>
+    </div>
+
+{% endblock %}
+

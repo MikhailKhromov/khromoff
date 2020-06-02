@@ -15,6 +15,7 @@ urlpatterns = [
     # path('docs/test-request', views.make_request, name='api-make-request'),
 
     path('method/', include('urlshortner.api.urls')),
+    path('method/search.scrape', views.StartCrawling.as_view(), name='search-scrape'),
     path('method/apikey.deactivate', views.DeactivateUserAPIKey.as_view(), name='apikey-deactivate'),
 
 ]

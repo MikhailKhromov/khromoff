@@ -26,6 +26,7 @@
                 <li class="nav-item d-block d-sm-none d-none d-sm-block d-md-none">
                     <h6>Интересное:</h6>
                     <a class="btn btn-primary btn-lg" href="{% host_url 'index' host 'urlshortner' %}">Сокращатель ссылок</a>
+                    <a class="btn btn-primary btn-lg mt-2" href="{% host_url 'search' host 'index' %}">Поисковик (бета-тест)</a>
                     <a class="btn btn-primary btn-lg mt-2" href="{% host_url 'docs-index' host 'api' %}">Документация API</a>
                     {% if is_subdomain %}
                         <a class="btn btn-primary btn-lg  mt-2" href="{% host_url 'index' host 'index' %}">Khromoff (создатель сайта)</a>
@@ -52,6 +53,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton12">
                         <a class="dropdown-item" href="{% host_url 'index' host 'urlshortner' %}">Сокращатель ссылок</a>
+                        <a class="dropdown-item" href="{% host_url 'search' host 'index' %}">Поисковик (альфа-тест)</a>
                         <a class="dropdown-item" href="{% url 'docs-index' host 'api' %}">Документация API</a>
                         {% if is_subdomain %}
                             <div class="dropdown-divider"></div>

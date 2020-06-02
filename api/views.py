@@ -117,3 +117,21 @@ class DeactivateUserAPIKey(APIView):
 
     def post(self, request):
         return self.get(request)
+
+
+class StartCrawling(APIView):
+    permission_classes = [IsAdminKey]
+    authentication_classes = [APITokenAuth]
+    # aXyNizxG.KmS56UHBpVzPT0B4lrrhLt5dp6JnZYtJ
+    serializer_class = UserAPIKeySerializer
+    http_method_names = ['post']
+
+    def post(self, request):
+        data = request.POST
+        if not data.get('start_page'):
+            raise ParamRequired('Parameter start_page was required but wasn\'t specified')
+
+        p = Thread(target=lambda: crawl(data['start_page']))
+        p.start()
+        return Response({'ok': True})
+

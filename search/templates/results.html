@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load hosts_override %}
+
+{% block title %}
+    Поиск Khrmff
+{% endblock %}
+{% block brand-name %}
+    Поисковик
+{% endblock %}
+{% block brand-name-url %}
+    {% url 'search' %}
+    {# TODO: fix this url name #}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="font-weight-normal mb-5">
+            Результаты по запросу
+            <span class="font-weight-bold">{{ request.GET.query }}</span>
+        </h2>
+        <div>
+            {% for i in pages %}
+                <div class="mb-4">
+                    <p class="h5 pb-0 mb-0">Ссылка - <a href="{{ i.url }}">{{ i.url }}</a></p>
+                    <small class="pt-5 mt-5"><span class="font-weight-bold">Описание: </span>{{ i.desc }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
